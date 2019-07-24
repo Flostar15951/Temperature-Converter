@@ -1,0 +1,27 @@
+#Python Project 1: Temperature Converter
+
+while True:
+#Start of the loop asking for temperature unit from and to and confirming that #the two units are not the same
+   while True:
+    temp_from=str(input('What temperature are you converting from: C, F, K, R, D, N, Re, or Ro?'))#Statement asks for the abbreviation(str) for the unit that is #being converted from
+
+    if (temp_from=='C' or temp_from=='F' or temp_from=='K' or temp_from=='R' or temp_from=='D' or temp_from=='N' or temp_from=='Re' or temp_from=='Ro'):
+      #Statement confirms that the string entered is one of the units
+     break
+    else:
+     print('You need to type a correct unit abbreviation.')
+
+
+   while True:
+    temp_to=str(input('What temperature are you converting to: C, F, K, R, D, N, Re, or Ro?'))#Statement asks for the abbreviation(str) for the unit that is #being converted to
+
+    if (temp_to=='C' or temp_to=='F' or temp_to=='K' or temp_to=='R' or temp_to=='D' or temp_to=='N' or temp_to=='Re' or temp_to=='Ro'):
+      #Statement confirms that the string entered is one of the units
+     break
+    else:
+     print('You need to type a correct unit abbreviation.')
+
+   if temp_from!=temp_to:
+    break
+   else:
+    print('You need to select two DIFFERENT units.')
