@@ -1,11 +1,19 @@
-#Python Project 1: Temperature Converter
+
+#Python Project 1: Temperature Calculator
+
+#Veriables Defined    name-input type-definition/use
+#temp_from-string-choosing the temperature unit of the values that the user will be inputing
+#temp_to-string-choosing the temperature unit of the values that the user will be converted to
+#temp_f_num-float-the numerical value that the user inputs that the temp will be converted from
+#temp_to_C_convert-num-the value of temp_f_num to a temperature value in C to convert to the final value
+#
 
 while True:
 #Start of the loop asking for temperature unit from and to and confirming that #the two units are not the same
    while True:
-    temp_from=str(input('What temperature are you converting from: C, F, K, R, D, N, Re, or Ro?'))#Statement asks for the abbreviation(str) for the unit that is #being converted from
+    temp_from=str(input('What temperature are you converting from: C, F, K, R, De, N, Re, or Ro?'))#Statement asks for the abbreviation(str) for the unit that is #being converted from
 
-    if (temp_from=='C' or temp_from=='F' or temp_from=='K' or temp_from=='R' or temp_from=='D' or temp_from=='N' or temp_from=='Re' or temp_from=='Ro'):
+    if (temp_from=='C' or temp_from=='F' or temp_from=='K' or temp_from=='R' or temp_from=='De' or temp_from=='N' or temp_from=='Re' or temp_from=='Ro'):
       #Statement confirms that the string entered is one of the units
      break
     else:
@@ -13,15 +21,84 @@ while True:
 
 
    while True:
-    temp_to=str(input('What temperature are you converting to: C, F, K, R, D, N, Re, or Ro?'))#Statement asks for the abbreviation(str) for the unit that is #being converted to
+    temp_to=str(input('What temperature are you converting to: C, F, K, R, De, N, Re, or Ro?'))#Statement asks for the abbreviation(str) for the unit that is #being converted to
 
-    if (temp_to=='C' or temp_to=='F' or temp_to=='K' or temp_to=='R' or temp_to=='D' or temp_to=='N' or temp_to=='Re' or temp_to=='Ro'):
+    if (temp_to=='C' or temp_to=='F' or temp_to=='K' or temp_to=='R' or temp_to=='De' or temp_to=='N' or temp_to=='Re' or temp_to=='Ro'):
       #Statement confirms that the string entered is one of the units
      break
     else:
      print('You need to type a correct unit abbreviation.')
-
+#Tells the code to return to the top if the temperature from and temperature to units are #the same
    if temp_from!=temp_to:
     break
    else:
     print('You need to select two DIFFERENT units.')
+#Asking for user input for the number value of the temperature
+while True:
+    temp_f_num=input('What is the temperature in ' + temp_from + '?')
+    try:
+     float_check=float(temp_f_num)
+    
+     break
+    except ValueError:
+     print('You MUST enter a number.')
+
+    continue
+temp_f_num=float(temp_f_num)
+#This section is convert all the temperatures into C for easier conversion to final units. 
+#Cuts the amount of converasion factors nearly in half.  
+while True:
+ if temp_from=='C':
+  temp_to_C_convert=temp_f_num
+  break
+ elif temp_from=='F':
+  temp_to_C_convert=(temp_f_num-32)*5/9
+  break
+ elif temp_from=='K':
+  temp_to_C_convert=temp_f_num-273.15
+  break
+ elif temp_from=='R':
+  temp_to_C_convert=(temp_f_num-491.67)*5/9
+  break
+ elif temp_from=='De':
+  temp_to_C_convert= 100-temp_f_num*2/3  
+  break
+ elif temp_from=='N':
+  temp_to_C_convert=temp_f_num*100/33   
+  break
+ elif temp_from=='Re':
+  temp_to_C_convert=temp_f_num*5/4
+  break
+ elif temp_from=='Ro':
+  temp_to_C_convert=(temp_f_num-7.5)*40/21
+  break
+#print(temp_to_C_convert)
+
+while True:
+  if temp_to=='C':
+   temp_final=temp_to_C_convert
+  break
+  elif temp_to=='F':
+   temp_final=temp_to_C_convert*9/5+32
+   break
+  elif temp_to=='K':
+   temp_final=temp_to_C_convert+273.15
+   break
+  elif temp_to=='R':
+   temp_final=(temp_to_C_convert+273.15)*9/5
+   break
+  elif temp_to=='De':
+   temp_final= (100-temp_to_C_convert)*3/2
+   break
+  elif temp_to=='N':
+   temp_final=temp_to_C_convert*33/100   
+   break
+  elif temp_to=='Re':
+   temp_final=temp_to_C_convert*4/5
+   break
+  elif temp_to=='Ro':
+   temp_final=temp_to_C_convert*21/40+7.5
+   break
+
+#The final output and print
+print(temp_f_num+' degrees '+temp_from+' converts to '+temp_final+' degrees '+temp_to)
