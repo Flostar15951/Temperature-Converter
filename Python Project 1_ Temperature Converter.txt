@@ -57,6 +57,57 @@ while True:
  elif temp_from=='K':
   temp_to_C_convert=temp_f_num-273.15
   break
+#
+
+while True:
+#Start of the loop asking for temperature unit from and to and confirming that #the two units are not the same
+   while True:
+    temp_from=str(input('What temperature are you converting from: C, F, K, R, De, N, Re, or Ro?'))#Statement asks for the abbreviation(str) for the unit that is #being converted from
+
+    if (temp_from=='C' or temp_from=='F' or temp_from=='K' or temp_from=='R' or temp_from=='De' or temp_from=='N' or temp_from=='Re' or temp_from=='Ro'):
+      #Statement confirms that the string entered is one of the units
+     break
+    else:
+     print('You need to type a correct unit abbreviation.')
+
+
+   while True:
+    temp_to=str(input('What temperature are you converting to: C, F, K, R, De, N, Re, or Ro?'))#Statement asks for the abbreviation(str) for the unit that is #being converted to
+
+    if (temp_to=='C' or temp_to=='F' or temp_to=='K' or temp_to=='R' or temp_to=='De' or temp_to=='N' or temp_to=='Re' or temp_to=='Ro'):
+      #Statement confirms that the string entered is one of the units
+     break
+    else:
+     print('You need to type a correct unit abbreviation.')
+#Tells the code to return to the top if the temperature from and temperature to units are #the same
+   if temp_from!=temp_to:
+    break
+   else:
+    print('You need to select two DIFFERENT units.')
+#Asking for user input for the number value of the temperature
+while True:
+    temp_f_num=input('What is the temperature in ' + temp_from + '?')
+    try:
+     float_check=float(temp_f_num)
+    
+     break
+    except ValueError:
+     print('You MUST enter a number.')
+
+    continue
+temp_f_num=float(temp_f_num)
+#This section is convert all the temperatures into C for easier conversion to final units. 
+#Cuts the amount of converasion factors nearly in half.  
+while True:
+ if temp_from=='C':
+  temp_to_C_convert=temp_f_num
+  break
+ elif temp_from=='F':
+  temp_to_C_convert=(temp_f_num-32)*5/9
+  break
+ elif temp_from=='K':
+  temp_to_C_convert=temp_f_num-273.15
+  break
  elif temp_from=='R':
   temp_to_C_convert=(temp_f_num-491.67)*5/9
   break
@@ -77,7 +128,7 @@ while True:
 while True:
   if temp_to=='C':
    temp_final=temp_to_C_convert
-  break
+   break
   elif temp_to=='F':
    temp_final=temp_to_C_convert*9/5+32
    break
@@ -101,4 +152,4 @@ while True:
    break
 
 #The final output and print
-print(temp_f_num+' degrees '+temp_from+' converts to '+temp_final+' degrees '+temp_to)
+print(temp_f_num, 'degrees', temp_from, 'converts to', temp_final,'degrees',temp_to)
